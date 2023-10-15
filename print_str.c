@@ -4,7 +4,7 @@
 *@str: argument
 *Return: length
 */
-int print_str(char * str)
+int print_str(char *str)
 {
 	int len = 0;
 
