@@ -12,6 +12,6 @@ int print_str(char *str)
 
 	len = str_len(str);
 	for (i = 0; i < len; i++)
-		_putchar(str[i]);
+		print_ch(str[i]);
 	return (len);
 }
