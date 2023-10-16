@@ -13,8 +13,6 @@ int _printf(const char *format, ...)
 
 	int ccount = 0;
 
-	char *scount;
-
 	va_list args;
 
 	va_start(args, format);
@@ -30,8 +28,8 @@ int _printf(const char *format, ...)
 					print_ch(ccount);
 					break;
 				case 's':
-					scount = print_str(va_arg(args, char *));
-					count += scount - 1;
+					ccount = print_str(va_arg(args, char *));
+					count += ccount - 1;
 					break;
 				case '%':
 					count += print_ch('%');
