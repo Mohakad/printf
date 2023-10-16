@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 
-	int ccount = 0;
+	char cha, *strin;
 
 	va_list args;
 
@@ -24,24 +24,24 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					ccount = va_arg(args, int);
-					print_ch(ccount);
+					cha = va_arg(args, int);
+					count += write(1, &cha, 1);
 					break;
 				case 's':
-					ccount = print_str(va_arg(args, char *));
-					count += ccount - 1;
+					strin = va_arg(args, char *);
+					count += write(1, strin, str_len(strin));
 					break;
 				case '%':
-					count += print_ch('%');
+					count += write(1, "%", 1);
 					break;
 				default:
-					count += print_ch('%');
-					count += print_ch(*format);
+					count += write(1, "%", 1);
+					count += write(1, &(*format), 1);
 					break;
 			}
 		}
 		else
-			count += print_ch(*format);
+			count += write(1, &(*format), 1);
 		format++;
 	}
 	va_end(args);
