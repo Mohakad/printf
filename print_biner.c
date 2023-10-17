@@ -18,7 +18,7 @@ int print_biner(va_list inp)
 			flag = 1;
 		if (flag)
 		{
-			_putchar(kb + '0');
+			_putchar('1');
 			numbc++;
 		}
 	}

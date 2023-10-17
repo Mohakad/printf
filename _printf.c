@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 wh:
 	while (format[index] && format)
 	{
-		j = 2;
+		j = 3;
 		while (j >= 0)
 		{
 			if (fn[j].st[0] == format[index] && fn[j].st[1] == format[index + 1])
