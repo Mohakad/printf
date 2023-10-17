@@ -1,11 +1,14 @@
 #include "main.h"
-#include <unistd.h>
 /**
  *print_ch- char print
- *@c: argument
+ *@chr: argument
  *Return: length
  */
-int print_ch(char c)
+int print_ch(va_list chr)
 {
-	return (write(1, &c, 1));
+	char c;
+
+	c = va_arg(chr, int);
+	_putchar(c);
+	return (1);
 }

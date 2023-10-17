@@ -4,14 +4,15 @@
 *@str: argument
 *Return: length
 */
-int print_str(char *str)
+int print_str(va_list str)
 {
-	int len = 0;
+	int len = 0, i;
 
-	int i;
+	char *st;
 
-	len = str_len(str);
+	st = va_arg(str, char *);
+	len = str_len(st);
 	for (i = 0; i < len; i++)
-		print_ch(str[i]);
+		_putchar(st[i]);
 	return (len);
 }
