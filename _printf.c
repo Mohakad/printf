@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 	int index = 0, prin_len = 0, j;
 
 	find fn[] = {
-		{"%c", print_ch}, {"%s", print_str}, {"%%", print_perc}
+		{"%c", print_ch}, {"%s", print_str}, {"%%", print_perc}, {"%b", print_biner}
 	};
 	va_list args;
 
