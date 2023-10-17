@@ -9,39 +9,43 @@
  */
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	unsigned int count = 0;
 
 	char cha, *strin;
 
 	va_list args;
 
 	va_start(args, format);
-	while (*format != '\0')
+	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
+			if (*format == 'c')
 			{
-				case 'c':
-					cha = va_arg(args, int);
-					count += write(1, &cha, 1);
-					break;
-				case 's':
-					strin = va_arg(args, char *);
-					count += write(1, strin, str_len(strin));
-					break;
-				case '%':
-					count += write(1, "%", 1);
-					break;
-				default:
-					count += write(1, "%", 1);
-					count += write(1, &(*format), 1);
-					break;
+				cha = va_arg(args, int);
+				print_ch(cha);
+				count++;
+			}
+			else if (*format == 's')
+			{
+				strin = va_arg(args, char *);
+				count += str_len(strin);
+				print_str(strin);
+			}
+			else if (*format == '%')
+			{
+				_putchar('%');
+				count++;
+			}
+			else
+			{
+				_putchar(*format);
+				count++;
 			}
 		}
 		else
-			count += write(1, &(*format), 1);
+			count += _putchar(*format);
 		format++;
 	}
 	va_end(args);
