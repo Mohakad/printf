@@ -9,7 +9,7 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int count = 0;
+	int count = 0;
 
 	char cha, *strin;
 
@@ -21,31 +21,26 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
+			switch (*format)
 			{
-				cha = va_arg(args, int);
-				print_ch(cha);
-				count++;
-			}
-			else if (*format == 's')
-			{
-				strin = va_arg(args, char *);
-				count += str_len(strin);
-				print_str(strin);
-			}
-			else if (*format == '%')
-			{
-				_putchar('%');
-				count++;
-			}
-			else
-			{
-				_putchar(*format);
-				count++;
+				case 'c':
+					cha = va_arg(args, int);
+					count += write(1, &cha, 1);
+					break;
+				case 's':
+					strin = va_arg(args, char *);
+					count += write(1, strin, str_len(strin));
+					break;
+				case '%':
+					count += write(1, "%", 1);
+					break;
+				default:
+					count += write(1, &(*format), 1);
+					break;
 			}
 		}
 		else
-			count += _putchar(*format);
+			count += write(1, &(*format), 1);
 		format++;
 	}
 	va_end(args);
