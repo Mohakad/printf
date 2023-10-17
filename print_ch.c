@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 /**
  *print_ch- char print
  *@chr: argument
@@ -9,6 +10,6 @@ int print_ch(va_list chr)
 	char c;
 
 	c = va_arg(chr, int);
-	_putchar(c);
+	write(1, &c, 1);
 	return (1);
 }

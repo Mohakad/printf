@@ -6,13 +6,16 @@
 */
 int print_str(va_list str)
 {
-	int len = 0, i;
+	char *s = va_arg(str, char *);
 
-	char *st;
+	int index = 0;
 
-	st = va_arg(str, char *);
-	len = str_len(st);
-	for (i = 0; i < len; i++)
-		_putchar(st[i]);
-	return (len);
+	if (s == NULL)
+		s = "(null)";
+	while (s[index])
+	{
+		_putchar(s[index]);
+		index++;
+	}
+	return (index);
 }

@@ -1,48 +1,39 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
 /**
- * _printf - Prints with format
- * @format: format for print
- * Return: number of characters
+ * _printf - Print output according to a format.
+ * @format: The format.
+ * Return: characters printed length.
  */
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	int index = 0, prin_len = 0, j;
 
-	char cha, *strin;
-
+	find fn[] = {
+		{"%c", print_ch}, {"%s", print_str}, {"%%", print_perc}
+	};
 	va_list args;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
-	while (*format)
+wh:
+	while (format[index] && format)
 	{
-		if (*format == '%')
+		j = 2;
+		while (j >= 0)
 		{
-			format++;
-			switch (*format)
+			if (fn[j].st[0] == format[index] && fn[j].st[1] == format[index + 1])
 			{
-				case 'c':
-					cha = va_arg(args, int);
-					count += write(1, &cha, 1);
-					break;
-				case 's':
-					strin = va_arg(args, char *);
-					count += write(1, strin, str_len(strin));
-					break;
-				case '%':
-					count += write(1, "%", 1);
-					break;
-				default:
-					count += write(1, &(*format), 1);
-					break;
+				prin_len += fn[j].fun(args);
+				index += 2;
+				goto wh;
 			}
+			j--;
 		}
-		else
-			count += write(1, &(*format), 1);
-		format++;
+		_putchar(format[index]);
+		index++;
+		prin_len++;
 	}
 	va_end(args);
-	return (count);
+	return (prin_len);
 }

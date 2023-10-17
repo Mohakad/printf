@@ -1,10 +1,19 @@
 #ifndef MAIN_H_I
 #define MAIN_H_I
 
+#include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <unistd.h>
-int print_ch(va_list chr);
+#include <limits.h>
+
+typedef struct format
+{
+	char *st;
+	int (*fun)();
+} find;
+int print_perc(void);
+int print_ch(va_list list);
 int _putchar(char c);
 int print_biner(va_list inp);
 int _printf(const char *format, ...);
