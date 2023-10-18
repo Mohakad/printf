@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * print_number - prints an integer
- * @num: integer to be printed
+ * print_integer - prints an integer
+ * @number: integer to be printed
+ * @return: the number of characters printed
  */
-void print_number(va_list num) {
-  int new_number = va_arg(num, int);
+int print_integer(va_list number) {
+  int new_number = va_arg(number, int);
 
   int integer, digit, least_significant_digit = new_number % 10;
 
@@ -29,7 +30,6 @@ void print_number(va_list num) {
       integer = integer / 10;
       exponent = exponent * 10;
     }
-
     new_number = new_number;
 
     while (exponent > 0) {
