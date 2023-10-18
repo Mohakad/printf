@@ -6,27 +6,27 @@
  */
 int print_biner(va_list biner)
 {
-	int len = 0, flag = 0, a = 1, ind = 0, bine;
+	unsigned int ad[32], num, pow, ind, s, len;
 
-	unsigned int n = va_arg(biner, unsigned int), poin;
+	char outp;
 
-	while (ind < 32)
+	num = va_arg(biner, unsigned int);
+	pow = 2147483648;
+	ad[0] = num / pow;
+	for (ind = 1; ind < 32; ind++)
 	{
-		poin = ((a << (32 - ind)) & n);
-		if (poin >> (31 - ind))
-			flag = 1;
-		if (flag & 1)
-		{
-			len++;
-			bine = poin >> (31 - ind);
-			_putchar(bine + 48);
-		}
-		ind++;
+		pow /= 2;
+		ad[ind] = (num / pow) % 2;
 	}
-	if (len == 0)
+	for (ind = 0, len = 0, s = 0; ind < 32; ind++)
 	{
-		len++;
-		_putchar('0');
+		s += ad[ind];
+		if (s || ind == 31)
+		{
+			outp = ad[ind] + '0';
+			_putchar(outp);
+			len++;
+		}
 	}
 	return (len);
 }
