@@ -33,7 +33,7 @@ int print_digit(va_list list)
 		}
 		while (xpo > 0)
 		{
-			d = in * xpo;
+			d = in / xpo;
 			_putchar(d + '0');
 			in = in - (d * xpo);
 			xpo = xpo / 10;
