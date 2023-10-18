@@ -1,31 +1,18 @@
 #include "main.h"
 /**
  * print_biner- print binery
- * @inp: argument
+ * @bine: argument
  * Return: counter
  */
-int print_biner(va_list inp)
+int print_biner(unsigned int bine)
 {
-	unsigned int n, kb;
+	int len = 0;
 
-	int flag = 0, numbc = 0, i;
-
-	n = va_arg(inp, unsigned int);
-	for (i = 31; i >= 0; i--)
+	if (bine > 1) 
 	{
-		kb = n >> i;
-		if (kb & 1)
-			flag = 1;
-		if (flag)
-		{
-			_putchar(kb + '0');
-			numbc++;
-		}
+		print_biner(bine >> 1);
+		len++;
 	}
-	if (numbc == 0)
-	{
-		numbc++;
-		_putchar('0');
-	}
-	return (numbc);
+	_putchar((bine & 1) + '0');
+	return (len);
 }

@@ -16,7 +16,7 @@ int print_integer(va_list number);
 int print_perc(void);
 int print_ch(va_list list);
 int _putchar(char c);
-int print_biner(va_list inp);
+int print_biner(unsigned int bine);
 int _printf(const char *format, ...);
 int print_str(va_list str);
 int str_len(char *str);
