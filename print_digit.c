@@ -12,13 +12,13 @@ int print_digit(va_list list)
 
 	int xpo = 1;
 
-	int i = 0;
+	int ind = 1;
 
 	newn = newn / 10;
 	in = newn;
 	if (ls < 0)
 	{
-		i++;
+		ind++;
 		_putchar('-');
 		newn = -newn;
 		in = -in;
@@ -28,18 +28,19 @@ int print_digit(va_list list)
 	{
 		while (in / 10 != 0)
 		{
-			in = in / 10;
-			xpo = xpo * 10;
+			in /= 10;
+			xpo *= 10;
 		}
+		in = newn;
 		while (xpo > 0)
 		{
 			d = in / xpo;
 			_putchar(d + '0');
 			in = in - (d * xpo);
 			xpo = xpo / 10;
-			i++;
+			ind++;
 		}
 	}
 	_putchar(ls + '0');
-	return (i);
+	return (ind);
 }
