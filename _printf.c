@@ -1,4 +1,5 @@
-include "main.h"
+#include "main.h"
+void print_buffer(char buffer[], int *buff_ind);
 /**
  * _printf - Print output according to a format.
  * @format: The format.
@@ -8,12 +9,11 @@ int _printf(const char *format, ...)
 {
 	char buffer[1024];
 
-	int index = 0, prin_len = 0, j;
+	int index = 0, prin_len = 0, j, buff_ind = 0;
 
 	find fn[] = {
 		{"%c", print_ch}, {"%s", print_str}, {"%%", print_perc},
-		{"%b", print_biner}, {"%i", print_integer}, {"%d", print_digit},
-		{"%o", print_oct}
+		{"%b", print_biner}
 	};
 	va_list args;
 
@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 wh:
 	while (format[index] && format)
 	{
-		j = 6;
+		j = 3;
 		while (j >= 0)
 		{
 			if (fn[j].st[0] == format[index] && fn[j].st[1] == format[index + 1])
@@ -38,6 +38,18 @@ wh:
 		index++;
 		prin_len++;
 	}
+	print_buffer(buffer, &buff_ind);
 	va_end(args);
 	return (prin_len);
+}
+/**
+* print_buffer - Prints the contents of the buffer
+* @buffer: chars
+* @buff_ind: current length
+*/
+void print_buffer(char buffer[], int *buff_ind)
+{
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
+	*buff_ind = 0;
 }
