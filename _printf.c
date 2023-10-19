@@ -1,4 +1,4 @@
-#include "main.h"
+include "main.h"
 /**
  * _printf - Print output according to a format.
  * @format: The format.
@@ -6,11 +6,14 @@
  */
 int _printf(const char *format, ...)
 {
+	char buffer[1024];
+
 	int index = 0, prin_len = 0, j;
 
 	find fn[] = {
 		{"%c", print_ch}, {"%s", print_str}, {"%%", print_perc},
-		{"%b", print_biner}, {"%i", print_integer}, {"%d", print_digit}
+		{"%b", print_biner}, {"%i", print_integer}, {"%d", print_digit},
+		{"%o", print_oct}
 	};
 	va_list args;
 
@@ -20,7 +23,7 @@ int _printf(const char *format, ...)
 wh:
 	while (format[index] && format)
 	{
-		j = 5;
+		j = 6;
 		while (j >= 0)
 		{
 			if (fn[j].st[0] == format[index] && fn[j].st[1] == format[index + 1])

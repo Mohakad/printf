@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <limits.h>
-
+#define BUFF_SIZE 1024
+int print_oct(va_list list);
 typedef struct format
 {
 	char *st;
