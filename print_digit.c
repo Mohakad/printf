@@ -5,7 +5,7 @@
  * @arg: integer to be printed
  * @return: the number of characters printed
  */
-void print_digit(va_list arg)
+int print_digit(va_list arg)
 {
 	int integer = va_arg(arg, int);
 
