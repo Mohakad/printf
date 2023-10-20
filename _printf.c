@@ -13,10 +13,8 @@ int _printf(const char *format, ...)
 
 	find fn[] = {
 		{"%c", print_ch}, {"%s", print_str}, {"%%", print_perc},
-		{"%b", print_biner}
+		{"%b", print_biner}, {"%i", print_integer} ,{"%d", print_digit}
 	};
-	void print_integer(va_list arg);
-	void print_integer(va_list arg);
 	va_list args;
 
 	if (format == NULL)
@@ -25,7 +23,7 @@ int _printf(const char *format, ...)
 wh:
 	while (format[index] && format)
 	{
-		j = 3;
+		j = 5;
 		while (j >= 0)
 		{
 			if (fn[j].st[0] == format[index] && fn[j].st[1] == format[index + 1])
