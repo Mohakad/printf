@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 		{"%b", print_biner}
 	};
 	int print_integer(va_list arg);
+	int print_integer(va_list arg);
 	va_list args;
 
 	if (format == NULL)
