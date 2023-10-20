@@ -23,4 +23,7 @@ int _printf(const char *format, ...);
 int print_str(va_list str);
 int str_len(char *str);
 int print_digit(va_list list);
+int print_non(va_list args);
+void print_integer(va_list arg;
+void print_digit(va_list arg);
 #endif
