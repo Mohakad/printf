@@ -2,22 +2,15 @@
 /**
  * print_digit - prints an integer
  * @n: integer to be printed
- * Returns: the number of characters printed
+ * Return: the number of characters printed
  */
 int print_digit(va_list n)
 {
-	int number = va_arg(n, int);
-
-	int in, digit, num_digits = number % 10;
-
-	int exponent = 1;
-
-	int i = 0;
+	int number = va_arg(n, int), in, digit, num_digits = number % 10,
+		i, exponent = 1;
 
 	number = number / 10;
-
 	in = number;
-
 	if (num_digits < 0)
 	{
 		i++;
@@ -43,8 +36,6 @@ int print_digit(va_list n)
 			i++;
 		}
 	}
-
 	_putchar(num_digits + '0');
 	return (i);
 }
-
