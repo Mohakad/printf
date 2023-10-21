@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * print_non - prints a character, escaping non-printable characters with a backslash (\)
- * @args: a variable argument list containing the character to print
- * @return: the number of characters printed
+ * print_non - prints a character  with a backslash (\)
+ * @args: a variable argument list containing the character
+ * Return: the number of characters
  */
 int print_non(va_list args)
 {
