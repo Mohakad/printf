@@ -14,7 +14,6 @@ typedef struct format
 	char *st;
 	int (*fun)();
 } find;
-int print_integer(va_list number);
 int print_perc(void);
 int print_ch(va_list list);
 int _putchar(char c);
@@ -24,6 +23,6 @@ int print_str(va_list str);
 int str_len(char *str);
 int print_digit(va_list list);
 int print_non(va_list args);
-int print_integer(va_list arg);
-int print_digit(va_list arg);
+int print_integer(va_list n);
+int print_digit(va_list n);
 #endif

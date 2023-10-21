@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 
 	find fn[] = {
 		{"%c", print_ch}, {"%s", print_str}, {"%%", print_perc},
-		{"%b", print_biner}, {"%i", print_integer} ,{"%d", print_digit}
+		{"%b", print_biner}, {"%i", print_integer}, {"%d", print_digit}
 	};
 	va_list args;
 
