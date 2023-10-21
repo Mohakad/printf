@@ -1,43 +1,50 @@
 #include "main.h"
-
 /**
  * print_digit - prints an integer
- * @arg: integer to be printed
- * @return: the number of characters printed
+ * @n: integer to be printed
+ * Returns: the number of characters printed
  */
-int print_digit(va_list arg)
+int print_digit(va_list n)
 {
-	int integer = va_arg(arg, int);
+	int number = va_arg(n, int);
 
-	int counter = 0;
-
-	if (integer < 0)
-	{
-		_putchar('-');
-
-		integer = -integer;
-
-		counter++;
-	}
+	int in, digit, num_digits = number % 10;
 
 	int exponent = 1;
-	while (integer / exponent >= 10)
+
+	int i = 0;
+
+	number = number / 10;
+
+	in = number;
+
+	if (num_digits < 0)
 	{
-		exponent *= 10;
+		i++;
+		_putchar(' - ');
+		number = -number;
+		in = -in;
+		num_digits = -num_digits;
+	}
+	if (in > 0)
+	{
+		while (in / 10 != 0)
+		{
+			in = in / 10;
+			exponent = exponent * 10;
+		}
+		n = number;
+		while (exponent > 0)
+		{
+			digit = in * exponent;
+			_putchar(digit + '0');
+			in = in - (digit * exponent);
+			exponent = exponent / 10;
+			i++;
+		}
 	}
 
-	while (exponent > 0)
-	{
-		int digit = integer / exponent;
-		_putchar(digit + '0');
-		integer -= digit * exponent;
-		exponent /= 10;
-		counter++;
-	}
-
-	_putchar(integer + '0');
-
-	return (counter);
+	_putchar(num_digits + '0');
+	return (i);
 }
-
 
