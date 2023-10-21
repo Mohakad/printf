@@ -7,47 +7,31 @@
  */
 int print_integer(va_list arg)
 {
-	int integer = va_arg(arg, int);
-
-	int quotient, digit, least_significant_digit = integer % 10;
-
-	int exponent = 1;
-
+	int number = va_arg(arg, int);
 	int counter = 0;
 
-	integer = integer / 10;
-	quotient = integer;
-
-	if (least_significant_digit < 0)
+	if (number < 0)
 	{
 		_putchar('-');
-		integer = -integer;
-		quotient = -quotient;
-		least_significant_digit = -least_significant_digit;
+		number = -number;
 		counter++;
 	}
 
-	if (integer > 0)
+	int divisor = 1;
+	while (number / divisor >= 10)
 	{
-		while (quotient / 10 != 0)
-		{
-			exponent = exponent * 10;
-			quotient = quotient / 10;
-		}
-
-		integer = integer;
-
-		while (exponent > 0)
-		{
-			digit = integer / exponent;
-			_putchar(digit + '0');
-			integer = integer - (digit * exponent);
-			exponent = exponent / 10;
-			counter++;
-		}
+		divisor *= 10;
 	}
 
-	_putchar(least_significant_digit + '0');
+	while (divisor > 0)
+	{
+		int digit = number / divisor;
+		number -= digit * divisor;
+		divisor /= 10;
+		_putchar(digit + '0');
+		counter++;
+	}
+
 	return (counter);
 }
 
