@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_digit - prints an integer
+ * print_integer - prints an integer
  * @n: integer to be printed
  * Return: the number of characters printed
  */
