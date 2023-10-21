@@ -1,37 +1,50 @@
 #include "main.h"
-
 /**
  * print_integer - prints an integer
- * @arg: integer to be printed
- * @return: the number of characters printed
+ * @n: integer to be printed
+ * Returns : the number of digits in the integer
  */
-int print_integer(va_list arg)
+int print_integer(va_list n)
 {
-	int number = va_arg(arg, int);
-	int counter = 0;
+	int number = va_arg(n, int);
 
-	if (number < 0)
+	int in, digit, num_digits = number % 10;
+
+	int exponent = 1;
+
+	int i = 0;
+
+	number = number / 10;
+
+	in = number;
+
+	if (num_digits < 0)
 	{
-		_putchar('-');
+		i++;
+		_putchar(' - ');
 		number = -number;
-		counter++;
+		in = -in;
+		num_digits = -num_digits;
 	}
-
-	int divisor = 1;
-	while (number / divisor >= 10)
+	if (in > 0)
 	{
-		divisor *= 10;
+		while (in / 10 != 0)
+		{
+			in = in / 10;
+			exponent = exponent * 10;
+		}
+		n = number;
+		while (exponent > 0)
+		{
+			digit = in * exponent;
+			_putchar(digit + '0');
+			in = in - (digit * exponent);
+			exponent = exponent / 10;
+			i++;
+		}
 	}
 
-	while (divisor > 0)
-	{
-		int digit = number / divisor;
-		number -= digit * divisor;
-		divisor /= 10;
-		_putchar(digit + '0');
-		counter++;
-	}
-
-	return (counter);
+	_putchar(num_digits + '0');
+	return (i);
 }
 
