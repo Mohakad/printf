@@ -7,14 +7,14 @@
 int print_integer(va_list n)
 {
 	int number = va_arg(n, int), in, digit, num_digits = number % 10,
-		i, exponent = 1;
+		i = 0, exponent = 1;
 
 	number = number / 10;
 	in = number;
 	if (num_digits < 0)
 	{
 		i++;
-		_putchar(' - ');
+		_putchar('-');
 		number = -number;
 		in = -in;
 		num_digits = -num_digits;
@@ -26,7 +26,7 @@ int print_integer(va_list n)
 			in = in / 10;
 			exponent = exponent * 10;
 		}
-		n = number;
+		in = number;
 		while (exponent > 0)
 		{
 			digit = in * exponent;
