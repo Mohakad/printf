@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * print_integer - prints an integer
- * @n: integer to be printed
+ * @n:an integer to be printed
  * Return: the number of characters printed
  */
 int print_integer(va_list n)
