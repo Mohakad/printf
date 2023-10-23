@@ -6,16 +6,16 @@
  */
 int print_digit(va_list n)
 {
-	int number = va_arg(n, int), in, digit, num_digits = number % 10,
+	int num = va_arg(n, int), in, digit, num_digits = num % 10,
 		i = 0, exponent = 1;
 
-	number = number / 10;
-	in = number;
+	num = num / 10;
+	in = num;
 	if (num_digits < 0)
 	{
 		i++;
 		_putchar('-');
-		number = -number;
+		num = -num;
 		in = -in;
 		num_digits = -num_digits;
 	}
@@ -26,7 +26,7 @@ int print_digit(va_list n)
 			in = in / 10;
 			exponent = exponent * 10;
 		}
-		in = number;
+		in = num;
 		while (exponent > 0)
 		{
 			digit = in * exponent;
