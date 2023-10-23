@@ -1,13 +1,12 @@
 #include "main.h"
-
 /**
- * print_non - prints a character  with a backslash (\)
+ * print_non - prints a character
  * @args: a variable argument list containing the character
  * Return: the number of characters
  */
 int print_non(va_list args)
 {
-	char character = va_arg(args, char);
+	char character = va_arg(args, int);
 
 	int length = 0;
 
