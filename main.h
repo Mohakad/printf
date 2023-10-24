@@ -9,6 +9,11 @@
 #define BUFF_SIZE 1024
 void print_buffer(char buffer[], int *buff_ind);
 int print_oct(va_list list);
+/**
+  *struct format- format
+  *@st: string
+  *@fun: func
+  */
 typedef struct format
 {
 	char *st;
